@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_195528) do
+ActiveRecord::Schema.define(version: 2020_03_22_202716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_195528) do
     t.string "html_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "driver_id", null: false
+    t.bigint "driver_id"
     t.index ["driver_id"], name: "index_appointments_on_driver_id"
   end
 
