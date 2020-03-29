@@ -6,7 +6,7 @@ class Appointment < ApplicationRecord
       event_id: event.id,
       description: event.summary,
       date: event.start.date_time.to_date,
-      time: event.start.date_time.to_time,
+      start_time: event.start.date_time.to_time,
       location: event.location,
       html_link: event.html_link
     )
