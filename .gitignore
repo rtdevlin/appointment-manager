@@ -22,3 +22,5 @@
 /config/master.key
 
 credentials.json
+/db/seeds.rb
+
