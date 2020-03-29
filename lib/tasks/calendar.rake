@@ -10,7 +10,7 @@ namespace :calendar do
 
     # Clone and set the subject
     auth_client = authorization.dup
-    auth_client.sub = 'mistydevlin@gmail.com'
+    auth_client.sub = ENV['service_name_email']
     auth_client.fetch_access_token!
 
     # Initialize the API
@@ -18,17 +18,10 @@ namespace :calendar do
     service.authorization = auth_client
 
     # Fetch the next 10 events for the user
-    calendar_id = 'appointments'
-    response = service.list_events(calendar_id,
-                                   max_results: 10,
-                                   single_events: true,
-                                   order_by: 'startTime',
-                                   time_min: Time.now.iso8601)
-    puts 'Upcoming events:'
-    puts 'No upcoming events found' if response.items.empty?
+    calendar_id = ENV['calendar_id']
+    response = service.list_events(calendar_id)
     response.items.each do |event|
-      start = event.start.date || event.start.date_time
-      puts "- #{event.summary} (#{start})"
+      Appointment.create_from_event(event)
     end
   end
 end
