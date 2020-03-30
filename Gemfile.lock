@@ -180,6 +180,10 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
+    twilio-ruby (5.32.0)
+      faraday (~> 1.0.0)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -202,6 +206,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.2)
   spring
   spring-watcher-listen (~> 2.0.0)
+  twilio-ruby
   tzinfo-data
 
 RUBY VERSION
