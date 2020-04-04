@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_204121) do
+ActiveRecord::Schema.define(version: 2020_03_30_210344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,12 @@ ActiveRecord::Schema.define(version: 2020_03_29_204121) do
   create_table "appointments", force: :cascade do |t|
     t.string "event_id"
     t.string "description"
-    t.date "date"
-    t.time "start_time"
     t.string "location"
     t.string "html_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "driver_id"
+    t.datetime "start_time"
     t.index ["driver_id"], name: "index_appointments_on_driver_id"
     t.index ["event_id"], name: "index_appointments_on_event_id", unique: true
   end
@@ -33,6 +32,21 @@ ActiveRecord::Schema.define(version: 2020_03_29_204121) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "message_lines", force: :cascade do |t|
+    t.bigint "message_id"
+    t.bigint "appointment_id"
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_message_lines_on_appointment_id"
+    t.index ["message_id"], name: "index_message_lines_on_message_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

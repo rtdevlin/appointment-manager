@@ -5,8 +5,7 @@ class Appointment < ApplicationRecord
     create(
       event_id: event.id,
       description: event.summary,
-      date: event.start.date_time.to_date,
-      start_time: event.start.date_time.to_time,
+      start_time: event.start.date_time,
       location: event.location,
       html_link: event.html_link
     )
