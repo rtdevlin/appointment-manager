@@ -5,7 +5,7 @@ namespace :twilio do
 
     #Get the next weeks appointments
     #appointments = Appointment.where('date in (?)', (Date.tomorrow)..(1.week.from_now))
-    appointments = Appointment.all
+    appointments = Appointment.where(driver_id: nil)
     #Create a new message
     message = Message.create
     #Create a MessageLine for each Appointment
@@ -28,7 +28,7 @@ namespace :twilio do
     auth_token = ENV['twilio_auth_token']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    Driver.where(first_name: 'Misty').each do |driver|
+    Driver.where(first_name: 'Ryan').each do |driver|
       @client.messages.create(
            body: message_body,
            from: '5672053654',

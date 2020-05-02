@@ -1,3 +1,5 @@
+development:
+  IS_DEV_ENV: "true"
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
