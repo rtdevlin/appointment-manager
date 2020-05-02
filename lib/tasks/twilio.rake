@@ -19,6 +19,7 @@ namespace :twilio do
       appointment = ml.appointment
       body << "#{ml.order}) #{appointment.start_time.in_time_zone('Eastern Time (US & Canada)').strftime("%m/%d %I:%M%p")} #{appointment.description[0..14]}"
     end
+    message_body = "Please reply with the number(s) of the appointments you volunteer to take Mom. Use spaces if volunteering for more than 1"
     message_body = body.join("\n")
     #Send Message
 
